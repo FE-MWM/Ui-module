@@ -1,0 +1,26 @@
+.page {
+  min-height: 100vh;
+  color: black;
+  background-color: #cbe9f2;
+  padding: 30px;
+}
+
+.title {
+  font-size: 40px;
+  padding: 40px;
+  text-align: center;
+}
+
+.buttonList {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+}
+
+.chapter {
+  border: 1px solid black;
+  background-color: #151819;
+  color: white;
+  border-radius: 12px;
+  padding: 15px;
+}
