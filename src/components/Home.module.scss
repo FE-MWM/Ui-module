@@ -1,0 +1,22 @@
+.list {
+  display: flex;
+  gap: 100px;
+
+  .profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .name {
+    font-weight: 700;
+    margin-top: 30px;
+  }
+
+  .image {
+    width: 300px;
+    height: 300px;
+  }
+}
