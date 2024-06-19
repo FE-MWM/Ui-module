@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./Home.module.scss";
 
 type Profile = {
@@ -13,14 +14,16 @@ const Home = () => {
   ];
 
   return (
-    <div>
+    <div className={styles.home}>
       <h1>UI STUDY</h1>
       <div className={styles.list}>
         {profile.map((item, index) => (
-          <div className={styles.profile} key={index}>
-            <img className={styles.image} src={item.image} alt="profile" />
-            <span className={styles.name}>{item.name}</span>
-          </div>
+          <Link to={"/Seonju"} key={index}>
+            <div className={styles.profile}>
+              <img className={styles.image} src={item.image} alt="profile" />
+              <span className={styles.name}>{item.name}</span>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
