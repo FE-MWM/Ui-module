@@ -1,18 +1,14 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Seonju from "./pages/Seonju";
-import Shinae from "./pages/Shinae";
-import Sujung from "./pages/Sujung";
+import routes from "./routes/seonju/routes";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/seonju" element={<Seonju />} />
-        <Route path="/msj" element={<Sujung />} />
-        <Route path="/wsa" element={<Shinae />} />
+        {routes.map((route, index) => (
+          <Route key={index} {...route} />
+        ))}
       </Routes>
     </div>
   );
