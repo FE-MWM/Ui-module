@@ -1,8 +1,8 @@
-import Chapter1 from "../../components/seonju/case1/Chapter1";
-import Home from "../../pages/Home";
-import Seonju from "../../pages/Seonju";
-import Shinae from "../../pages/Shinae";
-import Sujung from "../../pages/Sujung";
+import Chapter1 from "../components/seonju/case1/Chapter1";
+import Home from "../pages/Home";
+import Seonju from "../pages/Seonju";
+import Shinae from "../pages/Shinae";
+import Sujung from "../pages/Sujung";
 import React from "react";
 
 type Routes = {

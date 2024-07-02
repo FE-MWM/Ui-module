@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import routes from "./routes/seonju/routes";
+import routes from "./routes/routes";
 
 function App() {
   return (
