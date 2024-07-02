@@ -12,10 +12,14 @@ type Routes = {
 
 const routes: Routes[] = [
   { path: "/", element: <Home /> },
-  { path: "/seonju", element: <Seonju /> },
-  { path: "/seonju/chapter1", element: <Chapter1 /> },
   { path: "/msj", element: <Sujung /> },
-  { path: "/wsa", element: <Shinae /> }
+  { path: "/wsa", element: <Shinae /> },
+  { path: "/seonju", element: <Seonju /> },
+
+  // Seonju
+  { path: "/seonju/chapter1", element: <Chapter1 /> }
+
+  // Shinae
 ];
 
 export default routes;
