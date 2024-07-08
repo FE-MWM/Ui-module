@@ -38,8 +38,9 @@ Popover: 추가 정보나 옵션 제공, 클릭/포커스 시 나타남.
 Dialog: 다양한 상호작용을 위한 대화 창, Modal보다 일반적.
  */
 
-import { useRef } from "react";
-import PopoverItem from "./PopoverItem";
+import { useRef, useState } from "react";
+import dummyData from "../../../data/seonju/dummyData";
+import PopoverItemNew from "./PopoverItem";
 
 /**
  * 
@@ -90,36 +91,24 @@ Tooltip은 반드시 시각적 요소와의 연관성을 유지해야 합니다.
 
 const Popover = () => {
   const ulRef = useRef<HTMLUListElement>(null);
-  const targetOpen = (index: number) => {
-    const popoverList = ulRef.current?.querySelectorAll(
-      ".popver"
-      // eslint-disable-next-line no-undef
-    ) as NodeListOf<HTMLDivElement>;
-    console.log(popoverList);
-    popoverList.forEach((ele) => ele.classList.remove("display-on"));
-    popoverList[index].classList.add("display-on");
-  };
+
+  const [openIndex, setOpenIndex] = useState<number>();
 
   return (
     <div>
       <p></p>
-      <ul ref={ulRef} className="w-[300px]">
-        <PopoverItem
-          openFunc={() => targetOpen(0)}
-          text="dfbhkjkv  djfvkjdfbkj jsdbkjdfvjk fnfjfkckl dfbhkjkv  djfvkjdfbkj jsdbkjdfvjk fnfjfkckl "
-        />
-        <PopoverItem
-          openFunc={() => targetOpen(1)}
-          text="dfbhkjkv  djfvkjdfbkj jsdbkjdfvjk fnfjfkckl dfbhkjkv  djfvkjdfbkj jsdbkjdfvjk fnfjfkckl dfbhkjkv  djfvkjdfbkj jsdbkjdfvjk fnfjfkckl"
-        />
-        <PopoverItem
-          openFunc={() => targetOpen(2)}
-          text="dfbhkjkv  djfvkjdfbkj jsdbkjdfvjk fnfjfkckl dfbhkjkv  djfvkjdfbkj jsdbkjdfvjk fnfjfkckl dfbhkjkv  djfvkjdfbkj jsdbkjdfvjk fnfjfkckl"
-        />
-        <PopoverItem
-          openFunc={() => targetOpen(3)}
-          text="dfbhkjkv  djfvkjdfbkj jsdbkjdfvjk fnfjfkckl dfbhkjkv  djfvkjdfbkj jsdbkjdfvjk fnfjfkckl"
-        />
+      <ul ref={ulRef} className="w-[600px]">
+        {dummyData.map((ele, idx) => {
+          return (
+            <PopoverItemNew
+              key={idx}
+              isOpen={idx === openIndex ? true : false}
+              openFunc={() => setOpenIndex(idx)}
+              closeFunc={() => setOpenIndex(undefined)}
+              liData={ele}
+            />
+          );
+        })}
       </ul>
     </div>
   );

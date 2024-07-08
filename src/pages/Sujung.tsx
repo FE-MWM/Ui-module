@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Popover from "./msjComponent/popover/Popover";
+import Popover from "../components/msj/popover/Popover";
 
 const component = [<></>, <Popover key={1} />];
 
