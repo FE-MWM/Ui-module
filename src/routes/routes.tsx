@@ -6,6 +6,7 @@ import Challenge1 from "../components/wsa/Challenge1/Index";
 import Challenge2 from "../components/wsa/Challenge2/Index";
 import Sujung from "../pages/Sujung";
 import React from "react";
+import Chapter2 from "../components/seonju/case2/Chapter2";
 
 type Routes = {
   path: string;
@@ -20,6 +21,7 @@ const routes: Routes[] = [
 
   // Seonju
   { path: "/seonju/chapter1", element: <Chapter1 /> },
+  { path: "/seonju/chapter2", element: <Chapter2 /> },
 
   // Shinae
   { path: "/wsa/challenge1", element: <Challenge1 /> },
