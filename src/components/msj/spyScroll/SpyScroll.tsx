@@ -19,7 +19,7 @@ export function SpyScroll({ children, idName }: Props) {
           // 맨 처음 oserver로 감시 등록할땐, entries.length가 전체 갯수 이지만,
           // 뷰포트에 elemet가 감시될 때는 보여지는 element만 entries에 등록된다.
           if (ele.isIntersecting) {
-            setTargetId(ele.target.id);
+            setTargetId(ele.target?.id);
           }
         });
       },
