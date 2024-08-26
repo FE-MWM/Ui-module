@@ -1,0 +1,18 @@
+.no {
+  flex: 0 0 30px;
+  padding: 10px 5px;
+  text-align: center;
+  place-self: center;
+}
+
+.content {
+  padding: 10px 5px;
+  border-left: 1px solid #ccc;
+}
+
+.text {
+  font-size: 1em;
+  color: #000;
+  margin-top: 5px;
+  line-height: 1.5em;
+}
