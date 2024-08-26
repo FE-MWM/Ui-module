@@ -51,6 +51,7 @@ const Chapter3 = () => {
   return (
     <div>
       <List list={list} />
+      {isFetchingNextPage && <div>Loading more...</div>}
       <div ref={loadMoreRef} />
     </div>
   );
