@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 const Shinae = () => {
   const items = [
     { name: "Challenge1", route: "/wsa/challenge1" },
-    { name: "Challenge2", route: "/wsa/challenge2" }
+    { name: "Challenge2", route: "/wsa/challenge2" },
+    { name: "Challenge2_Origin", route: "/wsa/challenge2_origin" }
   ];
   return (
     <div className="w-screen h-screen flex flex-col items-center bg-blue-200">
