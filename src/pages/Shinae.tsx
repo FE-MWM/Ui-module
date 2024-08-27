@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 const Shinae = () => {
   const items = [
-    { id: 1, name: "Item 1" },
-    { id: 2, name: "Item 2" }
+    { name: "Challenge1", route: "/wsa/challenge1" },
+    { name: "Challenge2", route: "/wsa/challenge2" }
   ];
   return (
     <div className="w-screen h-screen flex flex-col items-center bg-blue-200">
@@ -13,10 +13,10 @@ const Shinae = () => {
       <ul className="">
         {items.map((item) => (
           <li
-            key={item.id}
+            key={item.name}
             className="w-full h-[40px] flex justify-center items-center border-b-2 border-black"
           >
-            <Link to={`detail/${item.id}`} className="hover:text-blue-500">
+            <Link to={`${item.route}`} className="hover:text-blue-500">
               {item.name}
             </Link>
           </li>
