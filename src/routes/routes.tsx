@@ -4,8 +4,11 @@ import Seonju from "../pages/Seonju";
 import Shinae from "../pages/Shinae";
 import Challenge1 from "../components/wsa/Challenge1/Index";
 import Challenge2 from "../components/wsa/Challenge2/Index";
+import Challenge2Origin from "../components/wsa/Challenge2_Origin/Index";
 import Sujung from "../pages/Sujung";
 import React from "react";
+import Chapter2 from "../components/seonju/case2/Chapter2";
+import Chapter3 from "../components/seonju/case3/Chapter3";
 
 type Routes = {
   path: string;
@@ -20,10 +23,13 @@ const routes: Routes[] = [
 
   // Seonju
   { path: "/seonju/chapter1", element: <Chapter1 /> },
+  { path: "/seonju/chapter2", element: <Chapter2 /> },
+  { path: "/seonju/chapter3", element: <Chapter3 /> },
 
   // Shinae
   { path: "/wsa/challenge1", element: <Challenge1 /> },
-  { path: "/wsa/challenge2", element: <Challenge2 /> }
+  { path: "/wsa/challenge2", element: <Challenge2 /> },
+  { path: "/wsa/challenge2_origin", element: <Challenge2Origin /> }
 ];
 
 export default routes;
