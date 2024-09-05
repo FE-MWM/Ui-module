@@ -6,6 +6,7 @@ import { SpyScrollContent1 } from "../components/msj/spyScroll/component/SpyScro
 import { SpyScrollContent3 } from "../components/msj/spyScroll/component/SpyScrollContent3";
 import { SpyScrollContent4 } from "../components/msj/spyScroll/component/SpyScrollContent4";
 import { SpyScrollContent5 } from "../components/msj/spyScroll/component/SpyScrollContent5";
+import InfinityScroll from "../components/msj/infinity/InfinityScroll";
 
 const component = [
   <></>,
@@ -16,7 +17,8 @@ const component = [
     <SpyScrollContent3 />
     <SpyScrollContent4 />
     <SpyScrollContent5 />
-  </SpyScroll>
+  </SpyScroll>,
+  <InfinityScroll key={3} />
 ];
 
 const Sujung = () => {
@@ -47,6 +49,13 @@ const Sujung = () => {
             role="button"
             aria-label={"spy scroll ui 열기"}
             onClick={() => setModal(2)}
+          >
+            spy-scroll
+          </li>
+          <li
+            role="button"
+            aria-label={"spy scroll ui 열기"}
+            onClick={() => setModal(3)}
           >
             spy-scroll
           </li>
