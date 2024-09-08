@@ -1,0 +1,33 @@
+.contents {
+  > div {
+    height: 100vh;
+    line-height: 100vh;
+    text-align: center;
+    font-size: 15em;
+
+    &:nth-child(1) {
+      background-color: #f99;
+    }
+    &:nth-child(2) {
+      background-color: #fc9;
+    }
+    &:nth-child(3) {
+      background-color: #ff9;
+    }
+    &:nth-child(4) {
+      background-color: #afa;
+    }
+    &:nth-child(5) {
+      background-color: #5cf;
+    }
+    &:nth-child(6) {
+      background-color: #48c;
+    }
+    &:nth-child(7) {
+      background-color: #a7a;
+    }
+    &:nth-child(8) {
+      background-color: #a9a;
+    }
+  }
+}
