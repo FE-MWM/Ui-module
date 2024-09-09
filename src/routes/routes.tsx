@@ -10,6 +10,7 @@ import Sujung from "../pages/Sujung";
 import React from "react";
 import Chapter2 from "../components/seonju/case2/Chapter2";
 import Chapter3 from "../components/seonju/case3/Chapter3";
+import Chapter4 from "../components/seonju/case4/Chapter4";
 
 type Routes = {
   path: string;
@@ -26,6 +27,7 @@ const routes: Routes[] = [
   { path: "/seonju/chapter1", element: <Chapter1 /> },
   { path: "/seonju/chapter2", element: <Chapter2 /> },
   { path: "/seonju/chapter3", element: <Chapter3 /> },
+  { path: "/seonju/chapter4", element: <Chapter4 /> },
 
   // Shinae
   { path: "/wsa/challenge1", element: <Challenge1 /> },
