@@ -1,0 +1,66 @@
+.title {
+    color: #db5b33;
+    font-weight: 300;
+    text-align: center;
+    font-size: 30px;
+}
+
+.toggleButton {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.toggleButtonSwitch {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    /* toggle => left: 52px */
+    width: 46px;
+    height: 46px;
+    background-color: #fff;
+    border-radius: 100%;
+    transition: left 0.3s;
+}
+
+.toggleButtonText {
+    display: flex;
+    background-color: #3dbf87;
+    border-radius: 25px;
+    box-shadow: 2px 2px 5px 0 rgba(50, 50, 50, 0.75);
+    transition: background-color 0.3s;
+}
+
+.toggleButtonTextOn {
+    width: 50%;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+}
+
+.toggleButtonTextOff {
+    width: 50%;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+}
+
+.dark {
+    background-color: #232323;
+
+    .toggleButtonSwitch {
+        left: 52px;
+    }
+
+    .toggleButtonText {
+        background-color: #fc3164;
+    }
+
+    article {
+        color: #fff;
+    }
+}
+
+
