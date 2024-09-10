@@ -47,20 +47,20 @@
     color: #fff;
 }
 
-.dark {
+:global(body.dark) {
     background-color: #232323;
-
+  
     .toggleButtonSwitch {
-        left: 52px;
+      left: 52px;
     }
-
+  
     .toggleButtonText {
-        background-color: #fc3164;
+      background-color: #fc3164;
     }
-
+  
     article {
-        color: #fff;
+      color: #fff;
     }
-}
+  }
 
 
