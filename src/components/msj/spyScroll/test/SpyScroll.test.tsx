@@ -1,7 +1,9 @@
-import React from "react";
-import { render } from "@testing-library/react";
-import { SpyScroll } from "../SpyScroll";
-test("test", () => {
+
+import { act, render, waitFor } from "@testing-library/react";
+import InfinityScroll from "../../infinity/InfinityScroll";
+import { renderWithQueryClient } from "../../testUtil";
+test("intersection observer 준비",async() => {
+  
   const mockObserveFn = () => {
     return {
       observe: jest.fn(),
@@ -12,11 +14,22 @@ test("test", () => {
 
   window.IntersectionObserver = jest.fn().mockImplementation(mockObserveFn);
 
-  const main = render(
-    <SpyScroll idName="test">
-      [<div key={0} style={{ width: "100vw" }} />]
-    </SpyScroll>
-  );
+
+  renderWithQueryClient(<InfinityScroll />)
+  
 
   expect(IntersectionObserver).toHaveBeenCalled();
+
+
+  // await waitFor(() => {
+  //   const child = render(<></>);
+  //   expect(child).toHaveLength(0)
+  // });
+
+  const child = render(<>item</>);
+  expect(child.getAllByText('item').length).toEqual(1)
+
+  act(()=>{})
+  
 });
+

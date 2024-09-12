@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
 interface Res {
     "userId": number;
@@ -12,20 +13,30 @@ const InfinityScroll = ()=>{
 
     const target = useRef<HTMLDivElement>(null);
 
-    const [page, setPage] = useState(1);
-    const [datas, setDatas] = useState<Res[]>([]);
-
-    const getApi = (page:number)=>{
-        axios.get(`https://jsonplaceholder.typicode.com/posts/${page}`).then((res)=>
-            console.log('res',res)
+    const getApi = async (page:number): Promise<any>=>{
+       return  await axios.get(`https://jsonplaceholder.typicode.com/posts/${page}`).then((result)=> {
+            console.log('res',result)
             //setDatas((pre)=>[...pre, ...res.data])
+            return result.data
+        }
         )
     };
+
+    const {data, fetchNextPage} = useInfiniteQuery<Res[],AxiosError,Res[][]>({
+        queryKey:['inf'],
+        queryFn:(param)=> {
+            console.log('???', param)
+            return axios.get(`https://jsonplaceholder.typicode.com/posts/${param.pageParam || 1}`).then((res)=>res.data)},
+        initialPageParam:1,
+        getNextPageParam:(last)=> { }
+
+    })
+   
 
     useEffect(()=>{
         const io = new IntersectionObserver(
             (ele)=>{
-                if(ele[0].isIntersecting){getApi(page);};
+                if(ele[0].isIntersecting)fetchNextPage();
             }   
         );
 
@@ -39,14 +50,14 @@ const InfinityScroll = ()=>{
 
     return(
         <>
-           <div>{datas.map((ele)=>{ 
+           {/* <div>{data?.map((ele)=>{ 
                 return(
                     <div key={ele.id}>
                         <p>{ele.title}</p>
                         <p>{ele.body}</p>
                     </div>
                 )})}
-            </div>
+            </div> */}
             <div ref={target}></div>
         </>
     )
