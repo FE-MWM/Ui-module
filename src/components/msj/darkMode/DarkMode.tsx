@@ -5,7 +5,7 @@ const style = (mode:string)=>{
     switch(mode){
         case 'light' : return 'bg-white text-black'
         case 'dark' : return 'bg-black text-white'
-        default : return ''
+        default : return 'bg-white text-black'
     }
 }
 
