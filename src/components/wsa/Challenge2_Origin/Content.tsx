@@ -15,7 +15,6 @@ const colors = [
   "bg-pink-200" // #a9a
 ];
 
-// forwardRef는 타입을 지정할 수 있도록 제네릭을 사용합니다
 const Content = forwardRef<HTMLDivElement, Props>(({ page }, ref) => (
   <div
     ref={ref}
@@ -25,7 +24,6 @@ const Content = forwardRef<HTMLDivElement, Props>(({ page }, ref) => (
   </div>
 ));
 
-// displayName 설정 (선택 사항)
 Content.displayName = "Content";
 
 export default Content;

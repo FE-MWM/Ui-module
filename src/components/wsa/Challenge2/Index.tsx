@@ -1,68 +1,75 @@
-import React, { useEffect, useRef, useState } from "react";
-import Nav from "./Nav";
-import Content from "./Content";
+import { useEffect, useRef, useState } from "react";
 
-const pages = Array.from({ length: 8 }).map((_, i) => i + 1);
+const colors = [
+  "bg-red-200", // #f99
+  "bg-orange-200", // #fc9
+  "bg-yellow-200", // #ff9
+  "bg-green-200", // #afa
+  "bg-blue-200", // #5cf
+  "bg-indigo-200", // #48c
+  "bg-purple-200", // #a7a
+  "bg-pink-200" // #a9a
+];
+
+const nums = [1, 2, 3, 4, 5, 6, 7, 8];
 
 export default function Index() {
-  const [viewIndex, setViewIndex] = useState(0);
-  const contentRef = useRef<(HTMLDivElement | null)[]>([]);
+  const divArr = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeIndex, setActiveIndex] = useState<number>(1);
 
-  const moveToPage = (i: number) => {
-    if (!contentRef.current[i]) return;
+  const handleScrollTo = (idx: number) => {
+    const el = divArr.current[idx];
+    el?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
 
-    console.log(contentRef.current[i]);
-
-    contentRef.current[i]?.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
+  const observerCallbak = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const index = divArr.current.indexOf(entry.target as HTMLDivElement);
+        setActiveIndex(index + 1);
+      }
     });
-    setViewIndex(i);
   };
 
   useEffect(() => {
-    const scrollSpyObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // const index = contentRef.current.indexOf(
-            //   entry.target as HTMLDivElement
-            // );
-            const index = Number(entry.target.innerHTML) - 1;
-            setViewIndex(index);
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.5
-      }
-    );
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5
+    };
 
-    const currentContentRefs = contentRef.current;
+    const observer = new IntersectionObserver(observerCallbak, observerOptions);
 
-    currentContentRefs.forEach((item) => {
-      if (item) {
-        scrollSpyObserver.observe(item);
-      }
-    });
+    const refs = divArr.current;
+
+    refs.forEach((el) => el && observer.observe(el));
 
     return () => {
-      currentContentRefs.forEach((item) => {
-        if (item) {
-          scrollSpyObserver.unobserve(item);
-        }
-      });
+      refs.forEach((el) => el && observer.unobserve(el));
     };
   }, []);
-
   return (
-    <div>
-      <Nav pages={pages} viewIndex={viewIndex} moveToPage={moveToPage}></Nav>
+    <div className="relative">
+      <div className="w-full h-[32px] fixed top-0 right-0 left-0 grid grid-cols-8 border-b border-black">
+        {nums.map((num) => (
+          <button
+            key={num}
+            className={`w-full h-full ${num !== 8 && "border-r border-black"} ${activeIndex === num ? "bg-gray-500 text-white" : ""}`}
+            onClick={() => handleScrollTo(num - 1)}
+          >
+            {num}
+          </button>
+        ))}
+      </div>
       <div>
-        {pages.map((p, i) => (
-          <Content key={p} page={p} ref={(r) => (contentRef.current[i] = r)} />
+        {nums.map((num, index) => (
+          <div
+            key={num}
+            ref={(el) => (divArr.current[index] = el)}
+            className={`w-screen h-screen flex justify-center items-center ${colors[num - 1]} font-bold text-8xl`}
+          >
+            {num}
+          </div>
         ))}
       </div>
     </div>
