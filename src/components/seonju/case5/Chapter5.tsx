@@ -11,7 +11,7 @@ const Chapter5 = () => {
           Reset
         </button>
 
-        <div className={styles.labs}>
+        <div className={styles.laps}>
           <div className={styles.labTitle}>Laps</div>
           <div className={styles.labTitle}>Time</div>
         </div>
