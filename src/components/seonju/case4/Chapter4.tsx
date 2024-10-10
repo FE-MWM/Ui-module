@@ -7,7 +7,6 @@ const Chapter4 = () => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   const handleDarkMode = () => {
-    console.log("checkcheck");
     const body = document.querySelector("body");
     if (body?.classList.contains("dark")) {
       setIsDarkMode(false);
