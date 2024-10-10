@@ -57,6 +57,12 @@ const Chapter5 = () => {
           <div className={styles.labTitle}>Laps</div>
           <div className={styles.labTitle}>Time</div>
         </div>
+        {laps.map((lap, index) => (
+          <div key={index} className={styles.laps}>
+            <div className={styles.labIndex}>{index + 1}</div>
+            <div className={styles.labTime}>{formatTime(lap)}</div>
+          </div>
+        ))}
       </div>
     </>
   );
