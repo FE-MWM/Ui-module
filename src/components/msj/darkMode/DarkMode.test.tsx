@@ -8,11 +8,11 @@ describe('다크모드 테스트', ()=>{
     beforeAll(()=>{
         Storage.prototype.getItem = jest.fn()
     })
-    
+
    // 컴포넌트 렌더
    beforeEach(()=>render(<DarkMode/>));
 
-    it('로컬스토리지에 저장되어 있는 테마를 기준으로 초기 렌더링한다',async()=>{
+    it('로컬스토리지에 저장되어 있는 테마를 기준으로 초기 렌더링한다',()=>{
         //mode라는 인자와 함께 호출되지않음.
         //expect(localStorage.getItem).not.toHaveBeenCalledWith('mode')
 
