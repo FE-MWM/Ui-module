@@ -1,7 +1,7 @@
-import React, { useState, forwardRef, useImperativeHandle, useEffect } from 'react';
+import {forwardRef, useImperativeHandle } from 'react';
 import { useStopWatcher } from './useStopWatcher';
 
-const Child = forwardRef((props, ref) => {
+const Child = forwardRef((_, ref) => {
     const {time, starter, stoper} = useStopWatcher()
 
     useImperativeHandle(ref, () => ({

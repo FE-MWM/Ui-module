@@ -1,7 +1,7 @@
 
 import { act, render, waitFor } from "@testing-library/react";
 import InfinityScroll from "../../infinity/InfinityScroll";
-import { renderWithQueryClient } from "../../testUtil";
+import { renderWithQueryClient } from "../../util/testUtil";
 test("intersection observer 준비",async() => {
   
   const mockObserveFn = () => {

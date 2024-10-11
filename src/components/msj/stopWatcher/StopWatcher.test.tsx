@@ -1,6 +1,7 @@
 
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import StopWatcher from "./StopWatcher";
+import '@testing-library/jest-dom';
 
 
 
@@ -28,14 +29,14 @@ import StopWatcher from "./StopWatcher";
 
 beforeEach(()=>render(<StopWatcher/>))
 
-it('스톱워치 ui 렌더',()=>{
+it('스톱워치 ui 렌더',async()=>{
  const startBtn = screen.getByRole('button',{name: /start/i})
  const resettBtn = screen.getByRole('button',{name: /reset/i})
  const timeElement = screen.getByText(/00:00:00/i);
  
  expect(startBtn).toBeInTheDocument();
  expect(resettBtn).toBeInTheDocument();
- expect(timeElement).toBeInTheDocument();
+ expect(timeElement).toBeInTheDocument()
 
 
 })
@@ -46,8 +47,8 @@ it('start 버튼 누르면', ()=>{
 
     fireEvent.click(startBtn);
 
-    expect(screen.getByRole('button',{name: /stop/i})).toBeInTheDocument();
-    expect(screen.getByRole('button',{name: /lap/i})).toBeInTheDocument();
+    waitFor(()=> expect(screen.getByRole('button',{name: /stop/i})).toBeInTheDocument());
+    waitFor(()=> expect(screen.getByRole('button',{name: /lap/i})).toBeInTheDocument());
     waitFor(()=> expect(timeElement).toHaveTextContent('00:00:99'));
     waitFor(()=> expect(timeElement).toHaveTextContent('00:01:00'));
     waitFor(()=> expect(timeElement).not.toHaveTextContent('00:00:100'));
