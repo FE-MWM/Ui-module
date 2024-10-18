@@ -7,6 +7,7 @@ import Challenge2 from "../components/wsa/Challenge2/Index";
 import Challenge2Origin from "../components/wsa/Challenge2_Origin/Index";
 import Challenge3 from "../components/wsa/Challenge3/Index";
 import Challenge4 from "../components/wsa/Challenge4/Index";
+import Challenge5 from "../components/wsa/Challenge5/Index";
 import Sujung from "../pages/Sujung";
 import React from "react";
 import Chapter2 from "../components/seonju/case2/Chapter2";
@@ -33,7 +34,8 @@ const routes: Routes[] = [
   { path: "/wsa/challenge2", element: <Challenge2 /> },
   { path: "/wsa/challenge2_origin", element: <Challenge2Origin /> },
   { path: "/wsa/challenge3", element: <Challenge3 /> },
-  { path: "/wsa/challenge4", element: <Challenge4 /> }
+  { path: "/wsa/challenge4", element: <Challenge4 /> },
+  { path: "/wsa/challenge5", element: <Challenge5 /> }
 ];
 
 export default routes;
