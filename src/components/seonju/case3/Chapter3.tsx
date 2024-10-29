@@ -28,7 +28,6 @@ const Chapter3 = () => {
       return await dummyFetcher(getList, pageParam);
     },
     getNextPageParam: (lastPage, allPages) => {
-      console.log('???', lastPage)
       return lastPage.length > 0 ? allPages.length : undefined;
     },
     initialPageParam: 0

@@ -63,14 +63,18 @@ const Sujung = () => {
           >
             infinite-scroll
           </li>
-          <li   role="button"
+          <li
+            role="button"
             aria-label={"다크모드 ui 열기"}
-            onClick={() => setModal(4)}>
+            onClick={() => setModal(4)}
+          >
             다크모드
           </li>
-          <li   role="button"
+          <li
+            role="button"
             aria-label={"스톱워치 ui 열기"}
-            onClick={() => setModal(5)}>
+            onClick={() => setModal(5)}
+          >
             스톱워치
           </li>
         </ul>
