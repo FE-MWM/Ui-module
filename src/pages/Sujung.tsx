@@ -8,6 +8,7 @@ import { SpyScrollContent4 } from "../components/msj/spyScroll/component/SpyScro
 import { SpyScrollContent5 } from "../components/msj/spyScroll/component/SpyScrollContent5";
 import InfinityScroll from "../components/msj/infinity/InfinityScroll";
 import DarkMode from "../components/msj/darkMode/DarkMode";
+import StopWatcher from "../components/msj/stopWatcher/StopWatcher";
 
 const component = [
   <></>,
@@ -20,7 +21,8 @@ const component = [
     <SpyScrollContent5 />
   </SpyScroll>,
   <InfinityScroll key={3} />,
-  <DarkMode />
+  <DarkMode />,
+  <StopWatcher />
 ];
 
 const Sujung = () => {
@@ -56,15 +58,20 @@ const Sujung = () => {
           </li>
           <li
             role="button"
-            aria-label={"spy scroll ui 열기"}
+            aria-label={"infinite scroll ui 열기"}
             onClick={() => setModal(3)}
           >
             infinite-scroll
           </li>
           <li   role="button"
-            aria-label={"spy scroll ui 열기"}
+            aria-label={"다크모드 ui 열기"}
             onClick={() => setModal(4)}>
             다크모드
+          </li>
+          <li   role="button"
+            aria-label={"스톱워치 ui 열기"}
+            onClick={() => setModal(5)}>
+            스톱워치
           </li>
         </ul>
       </main>

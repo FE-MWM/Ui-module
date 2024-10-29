@@ -1,4 +1,3 @@
-import { relative } from "path"
 import { useEffect, useState } from "react"
 
 const style = (mode:string)=>{
