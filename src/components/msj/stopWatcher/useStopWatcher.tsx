@@ -6,18 +6,19 @@ import {
 
 export const useStopWatcher = () => {
   const [time, setTime] = useState("00:00:00");
-  const run = useRef<undefined | NodeJS.Timer>(undefined);
+  const run = useRef<undefined | number>(undefined);
 
   const timerFunc = (time: string) => {
     const timeArr = stringTimeToNumberArr(time);
     const newTime = numberArrToStringTime(timeArr);
     setTime(newTime);
-    run.current = setTimeout(() => timerFunc(newTime), 100);
+    run.current = window.setTimeout(() => timerFunc(newTime), 100);
   };
 
-  const starter = () => (run.current = setTimeout(() => timerFunc(time), 100));
+  const starter = () =>
+    (run.current = window.setTimeout(() => timerFunc(time), 100));
 
-  const stoper = () => clearTimeout(run.current);
+  const stoper = () => window.clearTimeout(run.current);
 
   return { time, starter, stoper };
 };
