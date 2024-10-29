@@ -30,7 +30,6 @@ const Chapter5 = () => {
 
   const handleLab = () => {
     if (isRunning) {
-      console.log("lap");
       setLaps([...laps, time]);
     } else {
       resetStop();
