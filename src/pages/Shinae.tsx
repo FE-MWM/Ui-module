@@ -5,7 +5,9 @@ const Shinae = () => {
     { name: "Challenge1", route: "/wsa/challenge1" },
     { name: "Challenge2", route: "/wsa/challenge2" },
     { name: "Challenge2_Origin", route: "/wsa/challenge2_origin" },
-    { name: "Challenge3", route: "/wsa/challenge3" }
+    { name: "Challenge3", route: "/wsa/challenge3" },
+    { name: "Challenge4", route: "/wsa/challenge4" },
+    { name: "Challenge5", route: "/wsa/challenge5" }
   ];
   return (
     <div className="w-screen h-screen flex flex-col items-center bg-blue-200">
