@@ -2,7 +2,7 @@ import React from "react";
 import { useImperativeHandle } from "react";
 import { useStopWatcher } from "./useStopWatcher";
 
-const Child = React.forwardRef<HTMLDivElement>((_, ref) => {
+const Child = React.forwardRef((props, ref) => {
   const { time, starter, stoper } = useStopWatcher();
 
   useImperativeHandle(ref, () => ({
@@ -16,5 +16,7 @@ const Child = React.forwardRef<HTMLDivElement>((_, ref) => {
     </div>
   );
 });
+
+Child.displayName = "Child";
 
 export default Child;
