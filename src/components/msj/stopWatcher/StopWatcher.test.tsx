@@ -1,9 +1,7 @@
-
+import React from "react";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import StopWatcher from "./StopWatcher";
-import '@testing-library/jest-dom';
-
-
+import "@testing-library/jest-dom";
 
 /*
     Given : 스톱워치 ui 세팅 00:00:00, 왼쪽 버튼은 start, 오른쪽 버튼은 reset
@@ -27,32 +25,33 @@ import '@testing-library/jest-dom';
     Then: 시간이 변하지 않아야 한다.
 */
 
-beforeEach(()=>render(<StopWatcher/>))
+beforeEach(() => render(<StopWatcher />));
 
-it('스톱워치 ui 렌더',async()=>{
- const startBtn = screen.getByRole('button',{name: /start/i})
- const resettBtn = screen.getByRole('button',{name: /reset/i})
- const timeElement = screen.getByText(/00:00:00/i);
- 
- expect(startBtn).toBeInTheDocument();
- expect(resettBtn).toBeInTheDocument();
- expect(timeElement).toBeInTheDocument()
+it("스톱워치 ui 렌더", async () => {
+  const startBtn = screen.getByRole("button", { name: /start/i });
+  const resettBtn = screen.getByRole("button", { name: /reset/i });
+  const timeElement = screen.getByText(/00:00:00/i);
 
+  expect(startBtn).toBeInTheDocument();
+  expect(resettBtn).toBeInTheDocument();
+  expect(timeElement).toBeInTheDocument();
+});
 
-})
+it("start 버튼 누르면", () => {
+  const startBtn = screen.getByRole("button", { name: /start/i });
+  const timeElement = screen.getByText(/00:00:00/i);
 
-it('start 버튼 누르면', ()=>{
-    const startBtn = screen.getByRole('button',{name: /start/i})
-    const timeElement = screen.getByText(/00:00:00/i);
+  fireEvent.click(startBtn);
 
-    fireEvent.click(startBtn);
-
-    waitFor(()=> expect(screen.getByRole('button',{name: /stop/i})).toBeInTheDocument());
-    waitFor(()=> expect(screen.getByRole('button',{name: /lap/i})).toBeInTheDocument());
-    waitFor(()=> expect(timeElement).toHaveTextContent('00:00:99'));
-    waitFor(()=> expect(timeElement).toHaveTextContent('00:01:00'));
-    waitFor(()=> expect(timeElement).not.toHaveTextContent('00:00:100'));
-    waitFor(()=> expect(timeElement).not.toHaveTextContent('00:60:00'));
-    waitFor(()=> expect(timeElement).toHaveTextContent('01:00:00'));
-
- })
+  waitFor(() =>
+    expect(screen.getByRole("button", { name: /stop/i })).toBeInTheDocument()
+  );
+  waitFor(() =>
+    expect(screen.getByRole("button", { name: /lap/i })).toBeInTheDocument()
+  );
+  waitFor(() => expect(timeElement).toHaveTextContent("00:00:99"));
+  waitFor(() => expect(timeElement).toHaveTextContent("00:01:00"));
+  waitFor(() => expect(timeElement).not.toHaveTextContent("00:00:100"));
+  waitFor(() => expect(timeElement).not.toHaveTextContent("00:60:00"));
+  waitFor(() => expect(timeElement).toHaveTextContent("01:00:00"));
+});
