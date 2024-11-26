@@ -9,6 +9,7 @@ import { SpyScrollContent5 } from "../components/msj/spyScroll/component/SpyScro
 import InfinityScroll from "../components/msj/infinity/InfinityScroll";
 import DarkMode from "../components/msj/darkMode/DarkMode";
 import StopWatcher from "../components/msj/stopWatcher/StopWatcher";
+import AsynchronousTap from "../components/msj/asynchronousTap/AsynchronousTap";
 
 const component = [
   <div key={0}></div>,
@@ -22,7 +23,8 @@ const component = [
   </SpyScroll>,
   <InfinityScroll key={3} />,
   <DarkMode key={4} />,
-  <StopWatcher key={5} />
+  <StopWatcher key={5} />,
+  <AsynchronousTap key={6} />
 ];
 
 const Sujung = () => {
@@ -81,6 +83,14 @@ const Sujung = () => {
             onClick={() => setModal(5)}
           >
             스톱워치
+          </li>
+          <li
+            key={6}
+            role="button"
+            aria-label={"비동기 탭 열기"}
+            onClick={() => setModal(6)}
+          >
+            비동기 탭
           </li>
         </ul>
       </main>

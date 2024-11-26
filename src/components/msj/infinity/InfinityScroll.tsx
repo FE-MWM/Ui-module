@@ -1,12 +1,17 @@
 import { useEffect, useRef } from "react";
-import axios, { AxiosError } from "axios";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { InfiniteData, useInfiniteQuery } from "@tanstack/react-query";
 
-interface Res {
-  userId: number;
+interface Quote {
   id: number;
-  title: string;
-  body: string;
+  quote: string;
+  author: string;
+}
+interface Res {
+  quotes: Quote[];
+  total: number;
+  skip: number;
+  limit: number;
 }
 
 const InfinityScroll = () => {
@@ -22,23 +27,37 @@ const InfinityScroll = () => {
       });
   };
 
-  const { data, fetchNextPage } = useInfiniteQuery<Res[], AxiosError, Res[][]>({
+  const { data, fetchNextPage } = useInfiniteQuery<
+    Res,
+    Error,
+    InfiniteData<Res>,
+    string[],
+    number
+  >({
     queryKey: ["inf"],
-    queryFn: (param) => {
-      console.log("???", param);
+    queryFn: ({ pageParam = 1 }) => {
       return axios
         .get(
-          `https://jsonplaceholder.typicode.com/posts/${param.pageParam || 1}`
+          `https://dummyjson.com/quotes?limit=20&skip=${(pageParam - 1) * 20}`
         )
         .then((res) => res.data);
     },
     initialPageParam: 1,
-    getNextPageParam: (last) => {}
+    getNextPageParam: (lastPage, allPages) => {
+      if (lastPage.quotes.length >= lastPage.total) {
+        return undefined;
+      }
+      return allPages.length + 1;
+    }
   });
 
   useEffect(() => {
     const io = new IntersectionObserver((ele) => {
-      if (ele[0].isIntersecting) fetchNextPage();
+      console.log(ele[0].isIntersecting);
+      if (ele[0].isIntersecting) {
+        fetchNextPage();
+        console.log("true and fetch");
+      }
     });
 
     if (target.current) io.observe(target.current);
@@ -46,17 +65,23 @@ const InfinityScroll = () => {
     return () => io.disconnect();
   }, []);
 
+  console.log(data);
+
   return (
     <>
-      {/* <div>{data?.map((ele)=>{ 
-                return(
-                    <div key={ele.id}>
-                        <p>{ele.title}</p>
-                        <p>{ele.body}</p>
-                    </div>
-                )})}
-            </div> */}
-      <div ref={target}></div>
+      <div className="w-full">
+        {data?.pages.map((page) =>
+          page.quotes.map((item) => {
+            return (
+              <div key={item.id} className="mb-[25px]">
+                {item.quote}
+              </div>
+            );
+          })
+        )}
+      </div>
+
+      <div ref={target} className="w-full h-[10px] bg-black"></div>
     </>
   );
 };
