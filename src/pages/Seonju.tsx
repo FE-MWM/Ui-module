@@ -14,7 +14,11 @@ const Seonju = () => {
     { title: "Chapter4", address: "/seonju/chapter4" },
     { title: "Chapter5", address: "/seonju/chapter5" },
     { title: "Chapter6", address: "/seonju/chapter6" },
-    { title: "Chapter7", address: "/seonju/chapter7" }
+    { title: "Chapter7", address: "/seonju/chapter7" },
+    { title: "Chapter8", address: "/seonju/chapter8" },
+    { title: "Chapter9", address: "/seonju/chapter9" },
+    { title: "Chapter10", address: "/seonju/chapter10" },
+    { title: "Chapter11", address: "/seonju/chapter11" }
   ];
 
   return (
